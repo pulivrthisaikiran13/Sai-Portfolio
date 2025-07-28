@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Kiran Pulivarthi - Portfolio</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the portfolio */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            /* Ensures no horizontal scroll on small screens */
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Hero section specific styling */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* Section headings */
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Card-like styling for content blocks */
+        .content-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Skill items */
+        .skill-item {
+            background-color: #e0e7ff;
+            color: #4338ca;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            display: inline-block;
+            margin: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: #4338ca;
+            color: white;
+        }
+
+        /* Project item styling */
+        .project-item {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-item h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.75rem;
+        }
+
+        .project-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-item ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .project-item ul li::before {
+            content: '•';
+            color: #667eea;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Social links */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #667eea;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-link:hover {
+            background-color: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            margin-right: 8px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #667eea;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Download CV Button Style */
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .download-button svg {
+            margin-right: 8px;
+        }
+
+        /* Contact Form Specific Styles - adapted from your image */
+        .contact-form-container {
+            background-color: #ff9800; /* Orange background from the image */
+            padding: 40px;
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+            max-width: 600px; /* Adjust as needed */
+            width: 100%; /* Make it responsive */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For the background image */
+            overflow: hidden; /* Hide overflow for background image */
+            margin: 0 auto; /* Center the form */
+        }
+
+        /* Background image for contact form */
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/600x400/ff9800/ff9800?text=Contact+Background'); /* Placeholder for the background image */
+            background-size: cover;
+            background-position: center left;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .contact-form-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-form-container h2 {
+            color: #4a148c;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-form-container .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .contact-form-container .form-input {
+            width: 100%;
+            padding: 18px 18px 18px 60px;
+            border: none;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container .form-input::placeholder {
+            color: #888;
+        }
+
+        .contact-form-container .form-input:focus {
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.6);
+        }
+
+        .contact-form-container .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.5rem;
+            pointer-events: none;
+        }
+
+        .contact-form-container textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+            padding-top: 18px;
+        }
+
+        .contact-form-container .submit-button {
+            background-color: #4a148c;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form-container .submit-button:hover {
+            background-color: #6a1b9a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Message Box (Modal) Styles */
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .message-box-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-box {
+            background-color: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            transform: translateY(-30px);
+            transition: transform 0.3s ease;
+        }
+
+        .message-box-overlay.show .message-box {
+            transform: translateY(0);
+        }
+
+        .message-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4a148c;
+            margin-bottom: 20px;
+        }
+
+        .message-box p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .message-box button {
+            background-color: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .message-box button:hover {
+            background-color: #5a67d8;
+            transform: translateY(-1px);
+        }
+
+        .message-box #manualEmailDetails {
+            font-size: 0.9rem;
+            color: #777;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: left;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header/Navigation Bar -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
+            <a href="#home" class="text-2xl font-bold text-gray-800 rounded-md p-2 hover:bg-gray-100 transition-colors mb-2 sm:mb-0">SK</a>
+            <nav>
+                <ul class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-6">
+                     <li><a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Home</a></li>
+                    <li><a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">About</a></li>
+                    <li><a href="#skills" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Skills</a></li>
+                    <li><a href="#experience" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Experience</a></li>
+                    <li><a href="#education" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Education</a></li>
+                    <li><a href="#projects" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Projects</a></li>
+                    <li><a href="#contact-section" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors rounded-md p-2 hover:bg-gray-100 text-sm sm:text-base">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home/Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-4 py-20">
+            <h1 class="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 animate-fade-in-up">SAI KIRAN PULIVARTHI</h1>
+            <p class="text-white text-xl md:text-2xl lg:text-3xl font-light mb-8 animate-fade-in-up delay-200">Python Full Stack Trainee | Python Developer</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://linkedin.com/in/saikiran1311" target="_blank" class="social-link">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/pulivrthisaikiran13" target="_blank" class="social-link">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.205 11.385.6.11.82-.26.82-.577v-2.21c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.997.108-.775.418-1.305.762-1.605-2.665-.3-5.464-1.332-5.464-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.32 3.3.99.957-.266 1.983-.4 3-.404 1.017.004 2.043.138 3 .404 2.29-1.31 3.29-1 3.29-1 .652 1.656.237 2.876.117 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.8 5.62-5.475 5.92.42.36.81 1.096.81 2.21v3.26c0 .318.21.69.82.577C20.562 21.799 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.hackerrank.com/profile/pulivarthi13" target="_blank" class="social-link">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c4.782 0 8.66 3.878 8.66 8.66s-3.878 8.66-8.66 8.66-8.66-3.878-8.66-8.66 3.878-8.66 8.66-8.66zm0 2.25c-3.548 0-6.41 2.862-6.41 6.41s2.862 6.41 6.41 6.41 6.41-2.862 6.41-6.41-2.862-6.41-6.41-6.41zm0 2.25c2.29 0 4.16 1.87 4.16 4.16s-1.87 4.16-4.16 4.16-4.16-1.87-4.16-4.16 1.87-4.16 4.16-4.16zm0 2.25c-1.06 0-1.91 0.85-1.91 1.91s0.85 1.91 1.91 1.91 1.91-0.85 1.91-1.91-0.85-1.91-1.91-1.91z"/></svg>
+                    HackerRank
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 px-4 bg-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10 section-heading">About Me</h2>
+            <div class="content-card max-w-3xl mx-auto text-lg leading-relaxed text-gray-700 flex flex-col items-center">
+                <p class="text-center">Seeking a developer position to leverage my skills in Python, MySQL, Flask, and front-end technologies like HTML, CSS, and JavaScript. I have a strong inclination towards developing scalable web applications and am eager to learn from seasoned mentors. I am ready to work on collaborative projects to further develop my expertise in full-stack development and am committed to delivering impactful, user-friendly solutions in a team-based environment.</p>
+                <!-- Download CV Button -->
+                <a href="https://drive.google.com/file/d/1jJwYo4lauvJh0DpkwLLLJXCbC2LIOi7h/view?usp=sharing" download="Sai_Kiran_Pulivarthi_CV.pdf" class="download-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zM6.75 18a.75.75 0 01.75.75v1.5a.75.75 0 00.75.75h6a.75.75 0 00.75-.75v-1.5a.75.75 0 011.5 0v1.5A2.25 2.25 0 0115.75 22.5h-6A2.25 2.25 0 017.5 20.25v-1.5a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+                    </svg>
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10 section-heading">Technical Skills</h2>
+            <div class="content-card max-w-4xl mx-auto p-8">
+                <!-- Responsive grid for skills -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Frameworks</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">Django</span>
+                            <span class="skill-item">Bootstrap</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Frontend</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">HTML</span>
+                            <span class="skill-item">CSS</span>
+                            <span class="skill-item">JavaScript</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Databases</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">MS SQL Server</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">GitHub</span>
+                            <span class="skill-item">Power BI</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Libraries</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-item">Pandas</span>
+                            <span class="skill-item">Numpy</span>
+                            <span class="skill-item">Seaborn</span>
+                            <span class="skill-item">Tensorflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 px-4 bg-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10 section-heading">Professional Experience</h2>
+            <div class="content-card max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Python Full Stack Trainee</h3>
+                <p class="text-lg text-gray-600 mb-1">V CUBE Software Solutions PVT. LTD.</p>
+                <p class="text-md text-gray-500 italic mb-4">Currently Engaged</p>
+                <ul class="list-none pl-0 space-y-2 text-gray-700">
+                    <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-indigo-600 before:font-bold">Engaged in an immersive training program covering backend (Python, Django/Flask) and frontend tech stacks (HTML, CSS, JavaScript, React).</li>
+                    <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-indigo-600 before:font-bold">Working on hands-on projects mimicking real-world web applications with an emphasis on clean code, modular design, and RESTful APIs.</li>
+                    <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-indigo-600 before:font-bold">Gaining practical exposure to databases (MySQL), version control (Git), and deployment on cloud platforms and containerisation tools.</li>
+                    <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-indigo-600 before:font-bold">Collaborating with classmates and mentors to resolve challenging problems and develop deployable web applications.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10 section-heading">Education</h2>
+            <div class="content-card max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Chalapathi Institute of Engineering and Technology</h3>
+                <p class="text-lg text-gray-600 mb-1">Computer Science and Information Technology</p>
+                <p class="text-md text-gray-500 italic mb-1">Dec 2021 - May 2025</p>
+            </div>
+            <div class="content-card max-w-3xl mx-auto mt-6"> <!-- Added margin-top for spacing -->
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Sri Chaitanya Jr College</h3>
+                <p class="text-lg text-gray-600 mb-1">MPC</p>
+                <p class="text-md text-gray-500 italic mb-1">May 2019 - May 2021</p>
+            </div>
+            <div class="content-card max-w-3xl mx-auto mt-6"> <!-- Added margin-top for spacing -->
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Sri Chaitanya Techno School</h3>
+                <p class="text-lg text-gray-600 mb-1">SSC</p>
+                <p class="text-md text-gray-500 italic mb-1">May 2018 - Apr 2019</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-4 bg-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10 section-heading">Projects</h2>
+            <div class="project-item max-w-3xl mx-auto">
+                <h3 id="project-title-1">Secure Electoral Platform: Enhancing Transparency in E-Voting</h3>
+                <ul id="project-description-1">
+                    <li>Designed and implemented a secure, web-based e-voting system using Python and Django.</li>
+                    <li>Improved transparency, voter authentication, and result accuracy in digital elections.</li>
+                    <li>Integrated multi-factor authentication (MFA) and role-based access control (RBAC) to ensure secure and authorized participation.</li>
+                    <li>Developed a responsive frontend using HTML, CSS, JavaScript, and Bootstrap, enabling real-time monitoring and tamper-evident voting processes for institutional use.</li>
+                    <li>Utilised Django ORM with MySQL for secure vote storage and applied SHA-256 encryption and SSL/TLS to protect data integrity and confidentiality.</li>
+                </ul>
+                <button class="generate-explanation-btn mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75" data-project-id="1">
+                    ✨ Elaborate on Project
+                </button>
+                <div id="project-explanation-1" class="mt-4 p-4 bg-indigo-50 text-indigo-800 rounded-lg hidden">
+                    <div class="spinner hidden"></div>
+                    <p class="explanation-text"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-10 section-heading">Contact Me</h2>
+            <div class="contact-info-card">
+                <p class="text-xl font-semibold text-gray-800 mb-2">Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=saikiranpulivarthi13@gmail.com" target="_blank" class="text-indigo-600 hover:underline">saikiranpulivarthi13@gmail.com</a></p>
+                <p class="text-xl font-semibold text-gray-800 mb-2">Phone: <a href="tel:+916305760305" class="text-indigo-600 hover:underline">+91 6305760305</a></p>
+                <p class="text-xl font-semibold text-gray-700 mb-2">Hyderabad, Telangana</p>
+                <div class="social-links-container">
+                    <a href="https://linkedin.com/in/saikiran1311" target="_blank" class="social-link">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/pulivrthisaikiran13" target="_blank" class="social-link">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.205 11.385.6.11.82-.26.82-.577v-2.21c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.997.108-.775.418-1.305.762-1.605-2.665-.3-5.464-1.332-5.464-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.32 3.3.99.957-.266 1.983-.4 3-.404 1.017.004 2.043.138 3 .404 2.29-1.31 3.29-1 3.29-1 .652 1.656.237 2.876.117 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.8 5.62-5.475 5.92.42.36.81 1.096.81 2.21v3.26c0 .318.21.69.82.577C20.562 21.799 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/pulivarthi13" target="_blank" class="social-link">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c4.782 0 8.66 3.878 8.66 8.66s-3.878 8.66-8.66 8.66-8.66-3.878-8.66-8.66 3.878-8.66 8.66-8.66zm0 2.25c-3.548 0-6.41 2.862-6.41 6.41s2.862 6.41 6.41 6.41 6.41-2.862 6.41-6.41-2.862-6.41-6.41-6.41zm0 2.25c2.29 0 4.16 1.87 4.16 4.16s-1.87 4.16-4.16 4.16-4.16-1.87-4.16-4.16 1.87-4.16 4.16-4.16zm0 2.25c-1.06 0-1.91 0.85-1.91 1.91s0.85 1.91 1.91 1.91 1.91-0.85 1.91-1.91-0.85-1.91-1.91-1.91z"/></svg>
+                        HackerRank
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-tl-3xl rounded-tr-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Sai Kiran Pulivarthi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateButtons = document.querySelectorAll('.generate-explanation-btn');
+
+            generateButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const projectId = button.dataset.projectId;
+                    const projectTitleElement = document.getElementById(`project-title-${projectId}`);
+                    const projectDescriptionElement = document.getElementById(`project-description-${projectId}`);
+                    const explanationDiv = document.getElementById(`project-explanation-${projectId}`);
+                    const explanationText = explanationDiv.querySelector('.explanation-text');
+                    const spinner = explanationDiv.querySelector('.spinner');
+
+                    // Extract project title and description
+                    const title = projectTitleElement ? projectTitleElement.innerText : 'Unknown Project';
+                    const descriptionItems = projectDescriptionElement ? Array.from(projectDescriptionElement.querySelectorAll('li')).map(li => li.innerText).join('\n') : 'No description available.';
+
+                    // Show loading state and clear previous content
+                    explanationDiv.classList.remove('hidden');
+                    explanationText.innerText = '';
+                    spinner.classList.remove('hidden');
+                    button.disabled = true; // Disable button during generation
+
+                    const prompt = `Elaborate on the following project, highlighting its key features, technologies used, and impact, as if explaining it to a recruiter. Make it concise and impactful, around 3-5 sentences.
+                    Project Title: ${title}
+                    Project Description:
+                    ${descriptionItems}`;
+
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will automatically provide the API key at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            explanationText.innerText = text;
+                        } else {
+                            explanationText.innerText = 'Failed to generate explanation. Please try again.';
+                            console.error('Gemini API response structure unexpected:', result);
+                        }
+                    } catch (error) {
+                        explanationText.innerText = 'Error connecting to the API. Please check your network connection.';
+                        console.error('Error fetching from Gemini API:', error);
+                    } finally {
+                        spinner.classList.add('hidden');
+                        button.disabled = false; // Re-enable button
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
