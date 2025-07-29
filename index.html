@@ -194,7 +194,7 @@
             align-items: center;
             justify-content: center;
             padding: 12px 25px;
-            background-color: #4CAF50;
+            background-color: #667eea; /* Changed to match primary blue */
             color: white;
             border-radius: 8px;
             font-weight: 600;
@@ -205,60 +205,84 @@
         }
 
         .download-button:hover {
-            background-color: #45a049;
+            background-color: #5a67d8; /* Darker shade of blue on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .download-button svg {
+        /* Removed SVG margin from download button */
+        /* .download-button svg {
             margin-right: 8px;
-        }
+        } */
 
-        /* Contact Info Card Specific Styles */
-        .contact-info-card {
+        /* Contact Section Specific Styles */
+        .contact-section-content {
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             padding: 30px;
-            max-width: 400px;
+            max-width: 600px; /* Adjust as needed */
             margin: 0 auto;
             text-align: center;
         }
-        .contact-info-card p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+
+        .contact-section-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
         }
-        .contact-info-card a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
+
+        .contact-section-content h3::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            background: #667eea;
+            bottom: -8px;
+            left: 15%;
+            border-radius: 5px;
         }
-        .contact-info-card a:hover {
-            text-decoration: underline;
+
+        .contact-section-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
         }
-        .contact-info-card .social-links-container {
+
+        .contact-button-group {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 15px; /* Space between buttons */
             margin-top: 20px;
         }
-        .contact-info-card .social-link {
-            background-color: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 500;
+
+        .contact-button {
             display: inline-flex;
             align-items: center;
+            padding: 12px 25px;
+            background-color: #3b82f6; /* Blue color */
+            color: white;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .contact-info-card .social-link:hover {
-            background-color: #5a67d8;
+
+        .contact-button:hover {
+            background-color: #2563eb; /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
-        .contact-info-card .social-link svg {
+
+        .contact-button svg {
             margin-right: 8px;
+            width: 20px;
+            height: 20px;
         }
     </style>
 </head>
@@ -321,9 +345,6 @@
                 <p class="text-center">Seeking a developer position to leverage my skills in Python, MySQL, Flask, and front-end technologies like HTML, CSS, and JavaScript. I have a strong inclination towards developing scalable web applications and am eager to learn from seasoned mentors. I am ready to work on collaborative projects to further develop my expertise in full-stack development and am committed to delivering impactful, user-friendly solutions in a team-based environment.</p>
                 <!-- Download CV Button -->
                 <a href="https://drive.google.com/file/d/1jJwYo4lauvJh0DpkwLLLJXCbC2LIOi7h/view?usp=sharing" download="Sai_Kiran_Pulivarthi_CV.pdf" class="download-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zM6.75 18a.75.75 0 01.75.75v1.5a.75.75 0 00.75.75h6a.75.75 0 00.75-.75v-1.5a.75.75 0 011.5 0v1.5A2.25 2.25 0 0115.75 22.5h-6A2.25 2.25 0 017.5 20.25v-1.5a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
-                    </svg>
                     Download CV
                 </a>
             </div>
@@ -441,6 +462,9 @@
                     <li>Developed a responsive frontend using HTML, CSS, JavaScript, and Bootstrap, enabling real-time monitoring and tamper-evident voting processes for institutional use.</li>
                     <li>Utilised Django ORM with MySQL for secure vote storage and applied SHA-256 encryption and SSL/TLS to protect data integrity and confidentiality.</li>
                 </ul>
+                <button class="generate-explanation-btn mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75" data-project-id="1">
+                    ✨ Elaborate on Project
+                </button>
                 <div id="project-explanation-1" class="mt-4 p-4 bg-indigo-50 text-indigo-800 rounded-lg hidden">
                     <div class="spinner hidden"></div>
                     <p class="explanation-text"></p>
@@ -452,23 +476,30 @@
     <!-- Contact Section -->
     <section id="contact-section" class="py-16 px-4 bg-gray-50">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-10 section-heading">Contact Me</h2>
-            <div class="contact-info-card">
-                <p class="text-xl font-semibold text-gray-800 mb-2">Email: <a href="mailto:saikiranpulivarthi13@gmail.com" target="_blank" class="text-indigo-600 hover:underline">saikiranpulivarthi13@gmail.com</a></p>
-                <p class="text-xl font-semibold text-gray-800 mb-2">Phone: <a href="tel:+916305760305" class="text-indigo-600 hover:underline">+91 6305760305</a></p>
-                <p class="text-xl font-semibold text-gray-700 mb-2">Hyderabad, Telangana</p>
-                <div class="social-links-container">
-                    <a href="https://linkedin.com/in/saikiran1311" target="_blank" class="social-link">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <h2 class="text-4xl font-bold text-gray-800 mb-10 section-heading">Get in Touch</h2>
+            <div class="contact-section-content">
+                <p class="text-lg text-gray-700 mb-6">Feel free to connect with me through any of the following platforms:</p>
+                <div class="contact-button-group">
+                    <a id="email-contact-button" href="https://mail.google.com/mail/?view=cm&fs=1&to=saikiranpulivarthi13@gmail.com" target="_blank" class="contact-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.626 5.627a3 3 0 01-3.498 0L1.5 8.67z" />
+                            <path d="M22.5 6A2.25 2.25 0 0020.25 3.75H3.75A2.25 2.25 0 001.5 6v.659L12 13.871l10.5-7.212V6z" />
+                        </svg>
+                        Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/saikiran1311" target="_blank" class="contact-button">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         LinkedIn
                     </a>
-                    <a href="https://github.com/pulivrthisaikiran13" target="_blank" class="social-link">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.205 11.385.6.11.82-.26.82-.577v-2.21c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.997.108-.775.418-1.305.762-1.605-2.665-.3-5.464-1.332-5.464-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.32 3.3.99.957-.266 1.983-.4 3-.404 1.017.004 2.043.138 3 .404 2.29-1.31 3.29-1 3.29-1 .652 1.656.237 2.876.117 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.8 5.62-5.475 5.92.42.36.81 1.096.81 2.21v3.26c0 .318.21.69.82.577C20.562 21.799 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                        GitHub
+                    <a href="tel:+916305760305" class="contact-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.104 4.417a1.125 1.125 0 01-.625 1.348l-1.455.727a1.125 1.125 0 00-.587 1.114l.072.286a11.233 11.233 0 006.114 6.114l.286.072a1.125 1.125 0 001.114-.587l.727-1.455a1.125 1.125 0 011.348-.625l4.417 1.104a3 3 0 011.42 1.819h1.372a3 3 0 013 3V18a3 3 0 01-3 3H4.5a3 3 0 01-3-3V4.5z" clip-rule="evenodd" />
+                        </svg>
+                        Call Me
                     </a>
-                    <a href="https://www.hackerrank.com/profile/pulivarthi13" target="_blank" class="social-link">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c4.782 0 8.66 3.878 8.66 8.66s-3.878 8.66-8.66 8.66-8.66-3.878-8.66-8.66 3.878-8.66 8.66-8.66zm0 2.25c-3.548 0-6.41 2.862-6.41 6.41s2.862 6.41 6.41 6.41 6.41-2.862 6.41-6.41-2.862-6.41-6.41-6.41zm0 2.25c2.29 0 4.16 1.87 4.16 4.16s-1.87 4.16-4.16 4.16-4.16-1.87-4.16-4.16 1.87-4.16 4.16-4.16zm0 2.25c-1.06 0-1.91 0.85-1.91 1.91s0.85 1.91 1.91 1.91 1.91-0.85 1.91-1.91-0.85-1.91-1.91-1.91z"/></svg>
-                        HackerRank
+                    <a href="https://github.com/pulivrthisaikiran13" target="_blank" class="contact-button">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.205 11.385.6.11.82-.26.82-.577v-2.21c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.997.108-.775.418-1.305.762-1.605-2.665-.3-5.464-1.332-5.464-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.32 3.3.99.957-.266 1.983-.4 3-.404 1.017.004 2.043.138 3 .404 2.29-1.31 3.29-1 3.29-1 .652 1.656.237 2.876.117 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.8 5.62-5.475 5.92.42.36.81 1.096.81 2.21v3.26c0 .318.21.69.82.577C20.562 21.799 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
                     </a>
                 </div>
             </div>
@@ -487,6 +518,24 @@
             const generateButtons = document.querySelectorAll('.generate-explanation-btn');
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
+            const emailContactButton = document.getElementById('email-contact-button');
+            const recipientEmail = 'saikiranpulivarthi13@gmail.com'; // Your email address
+
+            // Function to detect if on a mobile device
+            function isMobile() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            }
+
+            // Set the href for the email button based on device
+            if (emailContactButton) {
+                if (isMobile()) {
+                    // For mobile, use mailto: to prompt native app
+                    emailContactButton.href = `mailto:${recipientEmail}`;
+                } else {
+                    // For desktop, use Gmail compose link
+                    emailContactButton.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}`;
+                }
+            }
 
             // Toggle mobile menu visibility
             menuToggle.addEventListener('click', () => {
