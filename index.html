@@ -210,11 +210,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
-        /* Removed SVG margin from download button */
-        /* .download-button svg {
-            margin-right: 8px;
-        } */
-
         /* Contact Section Specific Styles */
         .contact-section-content {
             background-color: white;
@@ -253,16 +248,22 @@
         }
 
         .contact-button-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid; /* Changed to grid */
+            grid-template-columns: repeat(1, 1fr); /* Default to 1 column on extra small screens */
             gap: 15px; /* Space between buttons */
             margin-top: 20px;
+        }
+
+        @media (min-width: 640px) { /* Tailwind's sm breakpoint */
+            .contact-button-group {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on small screens and up */
+            }
         }
 
         .contact-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* Center content within button */
             padding: 12px 25px;
             background-color: #3b82f6; /* Blue color */
             color: white;
@@ -271,6 +272,7 @@
             text-decoration: none;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Ensure buttons take full width of their grid cell */
         }
 
         .contact-button:hover {
